@@ -1,6 +1,6 @@
 {
   "name": "Causes Gerrit Auto Login",
-  "version": "0.1",
+  "version": "0.2",
   "manifest_version": 2,
   "content_scripts": [
     {

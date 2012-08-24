@@ -1,17 +1,20 @@
 (function() {
-  var clickIfPresent = function(text, callback) {
-    var link = document.evaluate("//a[text()='" + text + "']", document, null, XPathResult.ANY_UNORDERED_NODE_TYPE, null);
+  var clickIfPresent = function(params) {
+    var xPathExpr = "//" + (params.element || 'a') + "[text()='" + params.text + "']",
+        link      = document.evaluate(xPathExpr, document, null,
+                                         XPathResult.ANY_UNORDERED_NODE_TYPE, null);
     if (link.singleNodeValue) {
       link.singleNodeValue.click();
-      if (callback) {
-        callback();
+      if (params.callback) {
+        params.callback();
       }
     }
   };
 
   setTimeout(function() {
-    clickIfPresent('Sign In', function() {
-      clickIfPresent('Sign in with a Google Account');
-    });
+    clickIfPresent({ text: 'Continue', element: 'button' });
+    clickIfPresent({ text: 'Sign In', callback: function() {
+      clickIfPresent({ text: 'Sign in with a Google Account' });
+    } });
   }, 1000);
 })();
