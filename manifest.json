@@ -1,10 +1,10 @@
 {
-  "name": "Causes Gerrit Auto Login",
+  "name": "Comoyo Gerrit Auto Login",
   "version": "0.2",
   "manifest_version": 2,
   "content_scripts": [
     {
-      "matches": ["*://gerrit.causes.com/*"],
+      "matches": ["*://gerrit.comoyo.com/*"],
       "js": ["autologin.js"]
     }
   ]
